@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Cn">
+    <head>
+        <title>女生节许愿处</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="device=width-device,initial-scale=1">
+        <meta name="keywords" content="hust,wishswall">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            #su{
+               text-align: center;
+               font-style: italic;
+            }
+            footer{
+                text-align: center;
+                padding-top:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <img class='img-responsive col-sm-2 col-sm-offset-5' src='../src/logo.gif'>
+        </div>
+        <div class='contaier'>
+            <p id='su'>SEEE Student Union</p>
+        </div>
+        <div class='container'>
+            <form class='form-horizontal' id='myform' method="POST" action='../wish.php' onsubmit="return check()">
+                <div class='input-group' id='name'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-user'></span></span>
+                    <input type='text' class='form-control' placeholder="姓名" name='name' required>
+                </div>
+                <div class='input-group' id='class'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-th'></span></span>
+                    <input type='text' class='form-control' placeholder="班级" name='class' required>
+                </div>
+                <div class='input-group' id='password'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>
+                    <input type='password' class='form-control' placeholder="设置密码" name='password' required>
+                </div>
+                <div class='input-group' id='phonenumber'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-phone'></span></span>
+                    <input type='text' class='form-control' placeholder="手机号码" name='phonenumber' required>
+                </div>
+                <div class='input-group' id='qq'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-link'></span></span>
+                    <input type='text' class='form-control' placeholder="QQ号码" name='qq' required>
+                </div>
+                <div class='input-group' id='wish'>
+                    <span class='input-group-addon'><span class='glyphicon glyphicon-edit'></span></span>
+                    <textarea class='form-control' placeholder="请写下你的愿望" name='wish' required></textarea>
+                </div>
+                <div class="col-sm-12 col-xs-12" style="padding-top:10px;">
+                    <input type='button' class='btn default-btn btn-danger col-sm-3 col-sm-offset-2 col-xs-5 col-xs-offset-1' onclick="reset()" value='清空'>
+                    <input type='submit' class='btn default-btn btn-success col-sm-3 col-sm-offset-2 col-xs-5 col-xs-offset-1' value='提交'>
+                </div>
+            </form>
+        </div>
+        <footer>系统构建&nbsp;|&nbsp;网络部</footer>
+        <script>
+            function check(){
+                for(var i=0;i<=5;i++){
+                    if($(".input-group").eq(i).hasClass('has-error')){
+                        $(".input-group").eq(i).removeClass('has-error');
+                    }
+                }
+                var gname=$("input[name='name']").val();
+                var gclass=$("input[name='class']").val();
+                var gpassword=$("input[name='password']").val();
+                var gphonenumber=$("input[name='phonenumber']").val();
+                var gqq=$("input[name='qq']").val();
+                var gwish=$("input[name='wish]").val();
+                if(gname.length>4 || gname.length<2){
+                    $("input[name='name']").val('');
+                    $("input[name='name']").attr('placeholder','请输入真实姓名');
+                    $('#name').addClass('has-error');
+                    return false;
+                }
+                if(gpassword.length>10){
+                    $("input[name='password']").val('');
+                    $("input[name='password']").attr('placeholder','密码不要设置过长');
+                    $('#password').addClass('has-error');
+                    return false;
+                }
+                if(gclass.length>20 || gclass.length<4){
+                    $("input[name='class']").val('');
+                    $("input[name='class']").attr('placeholder','请输入正确班级');
+                    $('#class').addClass('has-error');
+                    return false;
+                }
+                var pnreg=new RegExp("^[0-9]{11}");
+                if(!pnreg.test(gphonenumber)){
+                    $("input[name='phonenumber']").val('');
+                    $("input[name='phonenumber']").attr('placeholder','请输入正确手机号码');
+                    $('#phonenumber').addClass('has-error');
+                    return false;
+                }
+                var qqreg=new RegExp("^[0-9]{5,10}$");
+                if(!qqreg.test(gqq)){
+                    $("input[name='qq']").val('');
+                    $("input[name='qq']").attr('placeholder','请输入正确qq');
+                    $('#qq').addClass('has-error');
+                    return false;
+                }
+                if(gwish.length>50 || gwish.length<2){
+                    $("input[name='wish']").val('');
+                    $("input[name='wish']").attr('placeholder','愿望不要设置过长或过短');
+                    $('#wish').addClass('has-error');
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>
