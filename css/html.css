@@ -1,0 +1,25 @@
+@charset "utf-8";
+#head{
+	margin-top:10%;
+};
+#bottom{
+	margin-bottom:0px;
+	position: relative;
+	margin-top:0px;
+	padding:0px;
+};
+.user{
+	padding-left:7px;
+	};
+input:focus {
+	 outline: none;
+	  };
+#location{
+	margin-top:70px;
+};
+#location1{
+	margin-top:30px;
+};
+.has-error {
+    color:    #999;
+}

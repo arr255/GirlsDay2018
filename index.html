@@ -1,40 +1,44 @@
-<!doctype html>
-<html lang="zh-Cn">
-    <head>
-        <title>心愿墙</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="device=width-device,initial-scale=1">
-        <meta name="keywords" content="hust,wishswall">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/index.css">
-        <script src="js/index.js"></script>  
-        <script src="index.php"></script>    
-    </head>
-    <body>
-        <h2>心愿墙</h2>
-        <div class="container col-sm-5">
-            <!--心愿-->
-            <ul id='wishes'>
-
-            </ul>
-        </div>
-        <footer>系统构建&nbsp;|&nbsp;网络部</footer>
-        <nav class='navbar navbar-default navbar-fixed-bottom'>
-            <ul class='nav navbar-nav col-sm-12'>
-                <li class='col-sm-4 col-xs-4'><a href="html/wish.html">我要许愿</a></li>
-                <li class='col-sm-4 col-xs-4'><a href="html/claim.html">我要领取愿望</a></li>
-                <li class='col-sm-4 col-xs-4'><a href="#">我要抽奖</a></li>
-            </ul>
-        </nav>
-        <script>
-            var length=info.id.length;
-            for(var i=0;i<length;i++){
-                str='<li>'+String(info.id[i])+'.'+(info.status[i]==0?'':'(已领取)')+info.wishes[i]+'</li>';
-                $('#wishes').append(str);
-            }
-        </script>
-    </body>
-    </html>
+<!DOCTYPE html">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=3, minimum-scale=0.5, user-scalable=no">
+<link href="css/html.css" rel="stylesheet" type="text/css" />
+<link rel='icon' href='src/favicon.ico' type='image/x-icon'>
+<link rel='shortcut icon' href='src/favicon.ico' type='image/x-icon'> 
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+<script src="index.php"></script>    
+<title>心愿墙</title>
+<style>
+body{
+	background: url('src/wishwall.jpg');
+	background-repeat: repeat-Y;
+	background-size:100% auto;
+	background-position: top;
+}
+a{
+	text-decoration:none;
+	font-family:Microsoft YaHei;
+}
+p{
+	word-break:break-all;
+}
+</style>
+</head>
+<body>
+<div id="head" align="center"><img src="src/wwtitle.png" /></div>
+<div>
+<ul id='wishes'>
+	</ul>
+	</div>
+<div align="center"><a href="html/wish.html">许愿戳我！</a>&nbsp;&nbsp;<a href="html/claim.html">领愿望戳我！</a>&nbsp&nbsp;<a href="html/draw.html">抽奖戳我！</a></div>
+<div id="bottom" align="center"><p>系统构建 | 网络部</p></div>
+<script>
+	var length=info.id.length;
+	for(var i=0;i<length;i++){
+		str='<li>'+String(info.id[i])+'.'+(info.status[i]==0?'':'(已领取)')+info.wishes[i]+'</li>';
+		$('#wishes').append(str);
+	}
+</script>
+</body>
+</html>

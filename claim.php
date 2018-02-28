@@ -3,6 +3,9 @@ function myError($errno,$errstr,$errfile,$errline){
     echo '第'.$errline.'行:'.$errstr;
     die();
 }
+function alert($s){
+    echo "<script>alert('".(string)$s."');</script>";
+}
 set_error_handler('myError');
     header("Content-Type: text/html;charset=utf-8");
     $servername="localhost";
