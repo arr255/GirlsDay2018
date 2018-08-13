@@ -10,7 +10,7 @@ set_error_handler('myError');
     header("Content-Type: text/html;charset=utf-8");
     $servername="localhost";
     $username="root";
-    $password='123456';
+    $password='';
     $dbname='GirlsDay';
     //创建连接
     $conn=new mysqli($servername,$username,$password,$dbname);
@@ -25,35 +25,41 @@ set_error_handler('myError');
     $wish=$_POST['wish'];
     $password=$_POST['password'];
     //表单验证
-    $regname='/.{2,4}/';
-    $regclass='/.{4,20}/';
-    $regphonenumber='/[0-9]{11}/';
-    $regqq='/[0-9]{5,10}/';
-    $regwish='/.{2,50}/';
-    $regpassword='/.{0,10}/';
+    $regname='/^[\x{4e00}-\x{9fa5}]{1,5}$/u';
+    $regclass='/^[\x{4e00}-\x{9fa5}0-9]{1,10}$/u';
+    $regphonenumber='/^[0-9]{5,12}$/';
+    $regqq='/^[0-9]{5,12}$/';
+    $regwish='/^[\x{4e00}-\x{9fa5}0-9a-z\p{P}]{2,50}$/u';
+    $regpassword='/[0-9a-z]{0,10}/';
     if(!preg_match($regname,$name)){
         alert('请输入正确名称');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     if(!preg_match($regclass,$class)){
         alert('请输入正确班级');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     if(!preg_match($regphonenumber,$phonenumber)){
         alert('请输入正确手机号码');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     if(!preg_match($regqq,$qq)){
         alert('请输入正确qq');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     if(!preg_match($regwish,$wish)){
         alert('愿望不要过长或过短');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     if(!preg_match($regpassword,$password)){
         alert('密码不要过长');
         echo '<script>window.location.href="html/wish.html"</script>';
+		exit();
     }
     //查询当前编号
     $sqlq="select id from wish order by id DESC limit 1";      
@@ -88,5 +94,5 @@ set_error_handler('myError');
             echo "Error: " . $sql . "<br>" . $conn->error;
         }      
     }
-    echo '<script>window.location.href="index.html"</script>';
+    echo '<script>window.location.href="main/index.html"</script>';
 ?>

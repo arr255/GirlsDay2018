@@ -24,5 +24,6 @@ create table claim(
     `qq` varchar(10) not null,
     `class` varchar(20) not null,
     `createTime` int not null,
+    `ifclaim` boolean DEFAULT 0,
     primary key(`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

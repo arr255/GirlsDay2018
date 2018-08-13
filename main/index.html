@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js" lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <!-- Bootstrap 核心 CSS 文件 -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+		<script src="../index.php"></script> 
+		<style>
+		ul {
+		    list-style-type:none;
+		}
+		</style>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                            <h3 class="masthead-brand">心愿墙</h3>
+                        </div>
+                    </div>
+<div>
+<ul id='wishes'>
+	</ul>
+	</div>
+                    <div class="inner cover">
+                        <h1 class="cover-heading">这里是心愿墙</h1>
+                        <p class="lead">快来许愿吧</p>
+                        <p class="lead">
+                            <a href="../html/wish.html"><button type="button" class="btn btn-lg btn-primary" >许愿戳我！</button></a>
+                            <a href="../html/claim.html"><button type="button" class="btn btn-lg btn-danger" >领愿戳我！</button></a>
+							<a href="../html/draw.html"><button type="button" class="btn btn-lg btn-success" >抽奖戳我！</button></a>
+                        </p>
+                    </div>
+					
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <hr class="hr__style">
+                            <p>本活动解释权归 电气学院学生会 所有</p>
+                            <p>技术支持 网络部</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+		<script>
+	var length=info.id.length;
+	for(var i=0;i<length;i++){
+		str='<li>'+String(info.id[i])+'.'+(info.status[i]==0?'':'(已领取)')+info.wishes[i]+'</li>';
+		$('#wishes').append(str);
+	}
+</script>
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <!--
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+        -->
+    </body>
+</html>

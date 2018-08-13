@@ -10,7 +10,7 @@ set_error_handler('myError');
     header("Content-Type: text/html;charset=utf-8");
     $servername="localhost";
     $username="root";
-    $password='123456';
+    $password='';
     $dbname='GirlsDay';
     //创建连接
     $conn=new mysqli($servername,$username,$password,$dbname);
@@ -32,18 +32,22 @@ set_error_handler('myError');
     if(!preg_match($regname,$name)){
         alert('请输入正确名称');
         echo '<script>window.location.href="html/claim.html"</script>';
+		exit();
     }
     if(!preg_match($regclass,$class)){
         alert('请输入正确班级');
         echo '<script>window.location.href="html/claim.html"</script>';
+		exit();
     }
     if(!preg_match($regphonenumber,$phonenumber)){
         alert('请输入正确手机号码');
         echo '<script>window.location.href="html/claim.html"</script>';
+		exit();
     }
     if(!preg_match($regqq,$qq)){
         alert('请输入正确qq');
         echo '<script>window.location.href="html/claim.html"</script>';
+		exit();
     }
     //查询编号是否被认领
     $sqlq="select * from wish where id='$id' and status=0";
@@ -69,7 +73,11 @@ set_error_handler('myError');
             $sql="insert into claim (id,name,class,phonenumber,qq,createTime)
                     values ('$id','$name','$class','$phonenumber','$qq','$time')";
             if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('提交成功');</script>";
+                $gsql="select id,name,class,phonenumber,qq from wish where id='$id'";
+                $ginfo=$conn->query($gsql)->fetch_assoc();
+                $alertginfo='提交成功\n愿望者信息\n编号:'.(string)$ginfo['id'].'\n姓名:'.(string)$ginfo['name'].'\n班级:'
+                .(string)$ginfo['class'].'\n电话:'.(string)$ginfo['phonenumber'].'\nqq:'.(string)$ginfo['qq'];
+                alert($alertginfo);
             } else {
                 echo "<script>alert('提交失败');</script>";
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -79,5 +87,5 @@ set_error_handler('myError');
             $conn->query($sqlupdate);
         }
     }
-        echo '<script>window.location.href="index.html"</script>';
+        echo '<script>window.location.href="main/index.html"</script>';
     ?>
